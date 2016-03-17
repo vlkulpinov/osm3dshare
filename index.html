@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Use correct character set. -->
+  <meta charset="utf-8">
+  <!-- Tell IE to use the latest, best version. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <!-- Latest compiled and minified CSS for Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+
+
+  <title>OSM 3d-models share tool</title>
+  <script src="../Build/Cesium/Cesium.js"></script>
+  <style>
+      @import url(../Build/Cesium/Widgets/widgets.css);
+      /*html, body, #cesiumContainer {
+          width: 100%; height: 100%; margin: 0; padding: 0;
+      }*/
+  </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img src="osm_logo.svg" alt="OSM" style="float:left;width:32px;height:32px;">OSM 3d Sharing Tool
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron"<br/>
+      <div class="container">
+        <br/><br/><br/>
+        <p>This is a prototype of the instrument for creating, tagging, mapping and sharing 3D models. <br>Now you are able to create awesome maps in another dimension..</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn how to use »</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- First row, with suggest to choose the place -->
+      <div class="row">
+        <h2>Place it into the world</h2>
+        <div class="col-md-6 col-md-offset-0">
+          <p>Find exact place where you want to insert your model. This is important part, but you don't need to be absolutely accurate, because you will align it at the next step</p>
+        </div>
+        <div id="mapid" class="col-md-offset-0"></div>
+      </div>
+
+      <div class="row">
+        <h2>Import models</h2>
+        <div class="col-md-4 col-md-offset-0">
+          <p>Now you can only import The GL Transmission Format (glTF) (to be exact (.glb), binary formar of glTF). But in future we well accept everything, even your sketches. On <a href="http://cesiumjs.org/convertmodel.html">CelsiumJS Website</a> you can convert COLLADA model (.dae) into glb</p>
+        </div>
+        <div class="col-md-3 col-md-offset-0">
+          <p><button class="btn btn-lg btn-default" role="button" id="button-choose" disabled>
+            Import model from computer
+          </a></button>
+          or you can use predefined model BigOldHouse
+          <p><button class="btn btn-default" id="button-predefined" role="button" disabled>
+            Use defined model
+          </a></button>
+        </div>
+      </div>
+
+      <div class="row" id="cesiumBlock">
+        <br>
+        <div id="cesiumContainer" class="fullSize"></div>
+        <div id="toolbar"></div>
+      <div>
+
+      <footer class="col-md-6 col-md-offset-3">
+        Github Repository: <a href="http://github.com/vlkulpinov">vlkulpinov</a>
+        <br>
+        Now for demonstration purposes only
+      </footer>
+    </div> <!-- /container -->
+
+      <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="js/index.js"></script>
+
+</body>
+
+</body>
+</html>
