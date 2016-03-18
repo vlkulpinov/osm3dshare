@@ -32,6 +32,9 @@ Also provide socializaton: user can share their 3d models, vote for models of an
 * 3D models for furniture (e.g. street lamps, post boxes,... stuff that does not have a fixed position but can be used more generally)
 * Online-Viewer for models
 
+#####Additional
+* Simple 3d editor
+* Visualize nearest 3d models for better matching
 
 ### Suggested scheme to start
 Having simple NodeJS web server, two databases: one for user information, comments, likes etc. and another for storing models and meta.

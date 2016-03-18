@@ -39,7 +39,7 @@
       <div class="container">
         <br/><br/><br/>
         <p>This is a prototype of the instrument for creating, tagging, mapping and sharing 3D models. <br>Now you are able to create awesome maps in another dimension..</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn how to use »</a></p>
+        <p><a class="btn btn-primary btn-lg" href="https://github.com/vlkulpinov/osm3dshare/tree/master/doc" role="button">Learn how to use (not available now) »</a></p>
       </div>
     </div>
 
@@ -50,6 +50,10 @@
         <div class="col-md-6 col-md-offset-0">
           <p>Find exact place where you want to insert your model. This is important part, but you don't need to be absolutely accurate, because you will align it at the next step</p>
         </div>
+        <div id="scrollable-dropdown-menu-search" class="col-md-5 col-md-offset-1">
+            <input type="text" id="lineAddress" class="typeahead tt-input" placeholder="Address (e.g. 221B Baker Street, London, United Kingdom)" required="" autofocus=""/>
+            <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: '.HelveticaNeueDeskInterface-Regular'; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 300; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+        </div>
         <div id="mapid" class="col-md-offset-0"></div>
       </div>
 
@@ -59,24 +63,48 @@
           <p>Now you can only import The GL Transmission Format (glTF) (to be exact (.glb), binary formar of glTF). But in future we well accept everything, even your sketches. On <a href="http://cesiumjs.org/convertmodel.html">CelsiumJS Website</a> you can convert COLLADA model (.dae) into glb</p>
         </div>
         <div class="col-md-3 col-md-offset-0">
-          <p><button class="btn btn-lg btn-default" role="button" id="button-choose" disabled>
-            Import model from computer
-          </a></button>
+          <!--<input type="button" value="Import model from computer" class="btn btn-lg btn-default" id="button-choose" disabled/>
+          <input id="fileInput" type="file" name="fileModel" style="display:none;" /> -->
+          <form id="model-form" action="/model-upload" method="POST">
+            <input type="file" id="model-select" name="files[]" disabled multiple/>
+            <!--<button type="submit" id="upload-button">Upload</button>-->
+            <button type="submit" class="btn btn-lg btn-default" id="button-select" disabled>Upload</button>
+          </form>
           or you can use predefined model BigOldHouse
-          <p><button class="btn btn-default" id="button-predefined" role="button" disabled>
+          <button class="btn btn-default" id="button-predefined" role="button" disabled>
             Use defined model
-          </a></button>
+          </button>
         </div>
       </div>
 
       <div class="row" id="cesiumBlock">
         <br>
-        <div id="cesiumContainer" class="fullSize"></div>
-        <div id="toolbar"></div>
+        <div class="col-md-10">
+          <div id="cesiumContainer"></div>
+          <div id="toolbar"></div>
+        </div>
+        <div class="col-md-offset-0 col-md-2">
+          <h3>Controls</h3>
+          <h4>Angle</h4>
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button class="btn btn-sml" disabled id="btn-decrease-angle">
+                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+              </button>
+            </span>
+            <input type="text" id="text-angle" class="form-control" placeholder="" value="0" readonly>
+            <span class="input-group-btn">
+              <button class="btn btn-sml" disabled id="btn-increase-angle">
+                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+              </button>
+            </span>
+          </div><!-- /input-group -->
+        </div>
       <div>
 
       <footer class="col-md-6 col-md-offset-3">
-        Github Repository: <a href="http://github.com/vlkulpinov">vlkulpinov</a>
+        <br>
+        Github Repository: <a href="https://github.com/vlkulpinov/osm3dshare">vlkulpinov</a>
         <br>
         Now for demonstration purposes only
       </footer>
@@ -84,10 +112,14 @@
 
       <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <!-- Need to take it from ThirdParties -->
+    <script src="js/typeahead.js"></script>
+
     <script src="js/index.js"></script>
 
 </body>

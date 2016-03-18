@@ -6,6 +6,10 @@
     var compression = require('compression');
     var url = require('url');
     var request = require('request');
+    var multiparty = require('multiparty');
+    var fs = require("fs");
+
+    var router = express.Router();
 
     var yargs = require('yargs').options({
         'port' : {
@@ -83,6 +87,55 @@
             bypassUpstreamProxyHosts[host.toLowerCase()] = true;
         });
     }
+
+    app.post('/model-upload', function(req, res, next) {
+        var form = new multiparty.Form();
+        var uploadFile = {path: '', type: '', size: 0};
+        var maxSize = 2 * 1024 * 1024; //2MB
+        // var supportMimeTypes = ['image/jpg', 'image/jpeg', 'image/png'];
+        var errors = [];
+
+        form.on('error', function(err){
+            if(fs.existsSync(uploadFile.path)) {
+                fs.unlinkSync(uploadFile.path);
+                console.log('error');
+            }
+        });
+
+        form.on('close', function() {
+            if(errors.length == 0) {
+                res.send({status: 'ok', text: uploadFile.path});
+            }
+            else {
+                if(fs.existsSync(uploadFile.path)) {
+                    fs.unlinkSync(uploadFile.path);
+                }
+                res.send({status: 'bad', errors: errors});
+            }
+        });
+
+        form.on('part', function(part) {
+            // console.log('part');
+            uploadFile.size = part.byteCount;
+            uploadFile.type = part.headers['content-type'];
+
+            var salt = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+            uploadFile.path = 'models/' + salt + '_' + part.filename;
+
+            if(uploadFile.size > maxSize) {
+                errors.push('File size is ' + uploadFile.size + '. Limit is' + (maxSize / 1024 / 1024) + 'MB.');
+            }
+            if(errors.length == 0) {
+                var out = fs.createWriteStream(uploadFile.path);
+                part.pipe(out);
+            }
+            else {
+                part.resume();
+            }
+        });
+
+        form.parse(req);
+    });
 
     app.get('/proxy/*', function(req, res, next) {
         // look for request like http://localhost:8080/proxy/http://example.com/file?query=1
