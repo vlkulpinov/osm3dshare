@@ -53,3 +53,9 @@ Since it's only prototype approaches will evolve.
 
 ### Contribution
 You are welcome to create issues, pr and just contact authors with ideas
+
+### Contact
+Vladimir Kulpinov, 4th year student of Moscow State University (Moscow Russia). Field of study: computer vision (as part of Laboratory of Computer Graphics and Multimedia). I used to work at Yandex company, Russia, as part of Map Department.
+I'm familiar with a lot of back-end libraries and frameworks (and a bit front-end). Prefered languages: C++, Python, JavaScript. I've done a lot of visualization that used OpenGL, OpenMP. I've participated in a lot of programming contests.
+
+*skype:* deformas
