@@ -36,6 +36,54 @@ Also provide socializaton: user can share their 3d models, vote for models of an
 * Simple 3d editor
 * Visualize nearest 3d models for better matching
 
+### REST API
+Thoughts about future backand handles
+####Meta
+#####GET /models-metadata-bbox
+Params:
+*min-lat
+*min-lon
+*max-lat
+*max-lon
+Returns:
+Meta data of modeles (model\_id, license, bounding\_poly, user\_id, upload\_time, quality, floors_num, etc)
+
+#####GET /users-metadata
+Params:
+* used_id
+Returns:
+user metadata
+
+####Models
+#####GET /models-export
+Params:
+*model_id list
+*quality
+Returns:
+Multiparty
+
+#####POST /model-data-create
+Params: 
+* user_id
+* auth key
+* model_name
+* center_latlng
+* multiparty
+* show (True/False)
+Returns:
+Code
+
+#####POST /model-data-update
+Params:
+* user_id
+* auth_key
+* transformation {'angle': '', zoom\_x: '', zoom\_y: ''}
+* center_latlng {lat: '', lng: ''}
+* show (True/False)
+Returns:
+Code
+
+
 ### Suggested scheme to start
 Having simple NodeJS web server, two databases: one for user information, comments, likes etc. and another for storing models and meta.
 
