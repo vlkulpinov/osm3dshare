@@ -47,7 +47,7 @@ Monthly created archives and torrents (sharding over different zones). It hard t
 Since it's only prototype approaches will evolve.
 
 ### Prototype 
-**What for now:** auth through OSM API, adding models, viewing, mapping into 3d-coordinates.
+**What for now:** ~~auth through OSM API~~(near future), adding models, viewing, mapping into 3d-coordinates.
 
 **Where:** Amazon micro instance with http://ec2-52-37-61-19.us-west-2.compute.amazonaws.com
 
