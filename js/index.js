@@ -39,7 +39,7 @@ var terrainProvider = new Cesium.CesiumTerrainProvider({
     requestVertexNormals: true
 });
 
-function createModel(url, headingDegrees) {
+function createModel(url) {
     viewer.entities.removeAll();
 
     var position = Cesium.Cartesian3.fromDegrees(marker.getLatLng().lng, marker.getLatLng().lat, 0);
