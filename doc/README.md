@@ -2,9 +2,10 @@
 
 There are four main pages: index, user page, model upload page, search page
 
-### Index page
-This is the first page for newcomers and everyone who enter.
+### Main diagram
+![Use cases diagram](/images/UseCase.png)
 
+### Index page
 It provide:
 * Login form
 * How to information
