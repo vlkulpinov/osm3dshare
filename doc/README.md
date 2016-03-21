@@ -3,7 +3,7 @@
 There are four main pages: index, user page, model upload page, search page
 
 ### Main diagram
-![Use cases diagram](/images/UseCase.png)
+![Use cases diagram](./images/UseCase.png)
 
 ### Index page
 It provide:
@@ -14,18 +14,11 @@ It provide:
 * Header (more info and links to everything)
 * Link to one or more 3D visualization tools (osm2world or related)
 
-Use cases:
- 1. Enter page, log in, participate in "fill-some-place-with-3d-models"
- 2. Enter page, look through different places with visulization tool
- 3. Enter page, look through information for beginers
- 4. Enter page, go to their profile
- 5. Enter page, go to search page
-
 ![Index Page](./images/1-Home.png)
 
 
 ### User page
-All information about user
+All information about user: achievements, OSM credentials, uploaded models
 
 Use cases:
  1. Enter page, go to recent edited models
@@ -34,7 +27,7 @@ Use cases:
 ![User page](./images/2-Another_page.png)
 
 ### Model page
-Main page. It's the tool to upload model into server
+Main page. It's the tool to upload model into server. Upload and edit model pages are almost the same
 
 ![Model page](./images/3-Add_model.png)
 
